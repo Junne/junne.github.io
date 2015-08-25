@@ -20,7 +20,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="iOS,watchOS," />
 
 
 
@@ -31,7 +31,7 @@
 
 
 
-  <title> Hello World // Junne </title>
+  <title> Glance at Watch OS 2 // Junne </title>
 </head>
 
 <body>
@@ -102,7 +102,7 @@
           
           
             
-              Hello World
+              Glance at Watch OS 2
             
           
         </h1>
@@ -110,7 +110,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-05-06
+          发表于 2015-06-14
         </span>
 
         
@@ -127,31 +127,49 @@
       
 
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p><img src="http://7xjmzg.com1.z0.glb.clouddn.com/watchos2.png" alt="watchos2"></p>
+<p></p><h3 id="1">Architecture</h3><br>WatchOS 2 can run the WatchKit extension on the user’s Apple Watch and make it possible for your app to run when your phone is not present.We have a look from the pic below:<br><img src="http://7xjmzg.com1.z0.glb.clouddn.com/watchos2architecture.png" alt="watchos2architecture"><br>WatchOS 1: Apple Watch requires the presence of an iPhone to run third-party apps. To create a third-party app, you need two separate bundles: a WatchKit app (that runs on Apple Watch) and a WatchKit extension (that runs on the user’s iPhone). The WatchKit app contains only the storyboards and resource files associated with your app’s user interface. The WatchKit extension contains the code for managing the WatchKit app’s user interface and for responding to user interactions.(from<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/WatchKitProgrammingGuide/index.html#//apple_ref/doc/uid/TP40014969" target="_blank" rel="external">Apple Watch Programming Guide</a>)  <p></p>
+<p></p><h3 id="2">Glance</h3><br>Glance displays timely and relevant information from your app.It’s a read-only interface.A glance is a focused interface that you use to display your app’s most important information. Glances are aptly named because they are intended to be looked at quickly by the user. Glances are nonscrolling; the entire glance interface must fit on a single screen. Glances are read-only and cannot contain buttons, switches, or other interactive controls. Tapping a glance launches your WatchKit app.  <p></p>
+<p></p><h3 id="3">Lifecycle</h3><br>Launching a WatchKit app:<br><img src="http://7xjmzg.com1.z0.glb.clouddn.com/watchoslifecycle.png" alt="watchoslifecycle"><br>The life cycle of an interface controller:<br><img src="http://7xjmzg.com1.z0.glb.clouddn.com/interfacelifecycle.png" alt="interfacelifecycle"><p></p>
+<p></p><h3 id="4">Resource</h3><p></p>
+<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/WatchKitProgrammingGuide/index.html#//apple_ref/doc/uid/TP40014969" target="_blank" rel="external">Apple Watch Programming Guide</a>  </li>
+<li><a href="https://developer.apple.com/library/prerelease/watchos/documentation/General/Conceptual/WatchKitProgrammingGuide/" target="_blank" rel="external">WatchKit Programming Guide</a>  </li>
+<li><a href="https://developer.apple.com/library/prerelease/watchos/documentation/General/Conceptual/WatchKitProgrammingGuide/" target="_blank" rel="external">watchOS 2 Transition Guide</a>  </li>
+<li><a href="https://developer.apple.com/watch/human-interface-guidelines/" target="_blank" rel="external">Apple Watch Human Interface Guidelines</a>  </li>
+<li><a href="https://developer.apple.com/watchkit/tips/" target="_blank" rel="external">WatchKit Development Tips and Best Practices</a>  </li>
+<li><a href="http://www.raywenderlich.com/?s=watchkit&amp;cof=FORID%3A10" target="_blank" rel="external">Raywenderlich Watch Tutorial</a>  </li>
+<li><a href="https://developer.apple.com/videos/wwdc/2015/?id=105" target="_blank" rel="external">Session 105:Introducing WatchKit for watchOS 2</a>  </li>
+<li><a href="https://developer.apple.com/videos/wwdc/2015/?id=207" target="_blank" rel="external">Session 207:WatchKit In-Depth,Part 1</a>  </li>
+<li><a href="https://developer.apple.com/videos/wwdc/2015/?id=208" target="_blank" rel="external">Session 208:WatchKit In-Depth,Part 2</a>  </li>
+<li><a href="https://www.icloud.com/pages/AwBWCAESEC9BxhCXUuOOg6ChrE-uZrwaKmQPtEHrcL7HFI4JgHygl08BETTFumet_i93LbIsRno9Gd3BFuo_APnDrQMCUCAQEEIIvE_BC86PVjR4kOIrboTvPUlOydWDyujn1yUU59Mv_S#WWDC15_Session_207,_208_WatchKit_In-Depth" target="_blank" rel="external">Session 207&amp;208 Note</a>  </li>
+</ul>
 
       
     </div>
 
     <div class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/"> #iOS </a>
+          
+            <a href="/tags/watchOS/"> #watchOS </a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/10/photograph_world/">初窥摄影的世界</a>
+              <a href="/2015/06/15/Concurrent-Programming/">iOS开发中的多线程</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/12/WWDC15/">WWDC15</a>
             
           </div>
         </div>
@@ -252,7 +270,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick_Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create_a_new_post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run_server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate_static_files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy_to_remote_sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">Glance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">3.</span> <span class="nav-text">Lifecycle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4"><span class="nav-number">4.</span> <span class="nav-text">Resource</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

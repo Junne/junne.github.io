@@ -20,7 +20,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="Swift,iOS," />
 
 
 
@@ -31,7 +31,7 @@
 
 
 
-  <title> Hello World // Junne </title>
+  <title> Swift // Junne </title>
 </head>
 
 <body>
@@ -102,7 +102,7 @@
           
           
             
-              Hello World
+              Swift
             
           
         </h1>
@@ -110,7 +110,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-05-06
+          发表于 2015-08-25
         </span>
 
         
@@ -127,31 +127,43 @@
       
 
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>Swift已然成为苹果主力推动的语言，OC虽然在一定时间内还有其存在并使用的价值，但从<a href="http://www.raywenderlich.com" target="_blank" rel="external">Ray</a>的教程来看，满屏的Swift就会让你觉得是时候使它成为你的生产力工具了 :)  </p>
+<p></p><h3 id="1">Start</h3><br>学习一门语言最快的就是去运用，做一个小的应用，不会的再去查资料，再做之前看一些Github上优秀的源码也是有必要的,例如可以先看看这些: <a href="https://github.com/amitburst/HackerNews" target="_blank" rel="external">HackerNews</a> <a href="https://github.com/MengTo/DesignerNewsApp" target="_blank" rel="external">DesignerNewsApp</a> 当你遇到有些基础知识不会的时候可以看看这些参考书:<a href="http://wiki.jikexueyuan.com/project/swift/" target="_blank" rel="external">The Swift Programming Language 中文版</a> 苹果关于Siwft资源的<a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">主页</a> 列举了很多资源，包括斯坦福的CS193p、书、WWDC视频、例子源码，都是不错的学习资源.  <p></p>
+<p></p><h3 id="2">CocoaPods VS Carthage</h3><br>当你真正开始开发项目的时候，也许你会使用很多第三方库，这个时候你要选择一个好的第三库管理工具，这个时候你也许会在<a href="https://github.com/CocoaPods/CocoaPods" target="_blank" rel="external">CocoaPods</a>和<a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">Carthage</a>之间做出一些选择，那该怎样选择呢？可以看看<a href="http://imtx.me/archives/1939.html" target="_blank" rel="external">这篇文章</a><br>CocoaPods的使用我想大家都非常熟悉 :)<br>创建Podfile文件:  <p></p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pod</span> init</span><br></pre></td></tr></table></figure>
+<p>打开Podfile文件后添加你需要的库:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">platform</span> :ios, <span class="string">'8.0'</span></span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line">target <span class="string">'Weather'</span> <span class="built_in">do</span></span><br><span class="line">pod <span class="string">'Alamofire'</span>, <span class="string">'~&gt;1.3'</span></span><br><span class="line">pod <span class="string">'SwiftyJSON'</span>, <span class="string">'~&gt;2.2.1'</span></span><br><span class="line"><span class="function"><span class="keyword">end</span></span></span><br><span class="line"></span><br><span class="line">target <span class="string">'WeatherTests'</span> <span class="built_in">do</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">end</span></span></span><br></pre></td></tr></table></figure>
+<p>继而安装一下就能使用了:  </p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
+<p>Carthage使用起来也相当简单:<br>首先创建一个名为Cartfile的文件，然后列出你想使用的库地址，例如:  </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">github</span> <span class="string">"Alamofire/Alamofire"</span></span><br><span class="line">github <span class="string">"SwiftyJSON/SwiftyJSON"</span></span><br></pre></td></tr></table></figure>
+<p>然后安装一些就OK了:  </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">carthage</span> update</span><br></pre></td></tr></table></figure>
+<p></p><h3 id="3">Alamofire</h3><br><a href="https://github.com/Alamofire/Alamofire" target="_blank" rel="external">Alamofire</a>无疑是Siwft版的AFNetworking.使用起来也相当方便，可以先看看这个<a href="http://www.raywenderlich.com/85080/beginning-alamofire-tutorial" target="_blank" rel="external">教程</a> 还有这个<a href="https://github.com/Moya/Moya" target="_blank" rel="external">封装的库</a>  <p></p>
 
       
     </div>
 
     <div class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/"> #Swift </a>
+          
+            <a href="/tags/iOS/"> #iOS </a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/10/photograph_world/">初窥摄影的世界</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/19/Learn-Git/">Learn Git</a>
             
           </div>
         </div>
@@ -252,7 +264,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick_Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create_a_new_post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run_server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate_static_files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy_to_remote_sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">Start</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">CocoaPods VS Carthage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">3.</span> <span class="nav-text">Alamofire</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

@@ -31,7 +31,7 @@
 
 
 
-  <title> Junne's Blog </title>
+  <title> Junne </title>
 </head>
 
 <body>
@@ -48,7 +48,7 @@
       <span class="logo">
         <i class="icon-logo"></i>
       </span>
-      <span class="site-title">Junne's Blog</span>
+      <span class="site-title">Junne</span>
   </a>
   <span class="logo-line-after"><i></i></span>
 </h1>
@@ -92,6 +92,745 @@
         <div id="content" class="content">
           
   <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/08/25/Swift/">
+                Swift
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-08-25
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>Swift已然成为苹果主力推动的语言，OC虽然在一定时间内还有其存在并使用的价值，但从<a href="http://www.raywenderlich.com" target="_blank" rel="external">Ray</a>的教程来看，满屏的Swift就会让你觉得是时候使它成为你的生产力工具了 :)  </p>
+<p></p><h3 id="1">Start</h3><br>学习一门语言最快的就是去运用，做一个小的应用，不会的再去查资料，再做之前看一些Github上优秀的源码也是有必要的,例如可以先看看这些: <a href="https://github.com/amitburst/HackerNews" target="_blank" rel="external">HackerNews</a> <a href="https://github.com/MengTo/DesignerNewsApp" target="_blank" rel="external">DesignerNewsApp</a> 当你遇到有些基础知识不会的时候可以看看这些参考书:<a href="http://wiki.jikexueyuan.com/project/swift/" target="_blank" rel="external">The Swift Programming Language 中文版</a> 苹果关于Siwft资源的<a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">主页</a> 列举了很多资源，包括斯坦福的CS193p、书、WWDC视频、例子源码，都是不错的学习资源.  <p></p>
+<p></p><h3 id="2">CocoaPods VS Carthage</h3><br>当你真正开始开发项目的时候，也许你会使用很多第三方库，这个时候你要选择一个好的第三库管理工具，这个时候你也许会在<a href="https://github.com/CocoaPods/CocoaPods" target="_blank" rel="external">CocoaPods</a>和<a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">Carthage</a>之间做出一些选择，那该怎样选择呢？可以看看<a href="http://imtx.me/archives/1939.html" target="_blank" rel="external">这篇文章</a><br>CocoaPods的使用我想大家都非常熟悉 :)<br>创建Podfile文件:  <p></p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pod</span> init</span><br></pre></td></tr></table></figure>
+<p>打开Podfile文件后添加你需要的库:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">platform</span> :ios, <span class="string">'8.0'</span></span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line">target <span class="string">'Weather'</span> <span class="built_in">do</span></span><br><span class="line">pod <span class="string">'Alamofire'</span>, <span class="string">'~&gt;1.3'</span></span><br><span class="line">pod <span class="string">'SwiftyJSON'</span>, <span class="string">'~&gt;2.2.1'</span></span><br><span class="line"><span class="function"><span class="keyword">end</span></span></span><br><span class="line"></span><br><span class="line">target <span class="string">'WeatherTests'</span> <span class="built_in">do</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">end</span></span></span><br></pre></td></tr></table></figure>
+<p>继而安装一下就能使用了:  </p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
+<p>Carthage使用起来也相当简单:<br>首先创建一个名为Cartfile的文件，然后列出你想使用的库地址，例如:  </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">github</span> <span class="string">"Alamofire/Alamofire"</span></span><br><span class="line">github <span class="string">"SwiftyJSON/SwiftyJSON"</span></span><br></pre></td></tr></table></figure>
+<p>然后安装一些就OK了:  </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">carthage</span> update</span><br></pre></td></tr></table></figure>
+<p></p><h3 id="3">Alamofire</h3><br><a href="https://github.com/Alamofire/Alamofire" target="_blank" rel="external">Alamofire</a>无疑是Siwft版的AFNetworking.使用起来也相当方便，可以先看看这个<a href="http://www.raywenderlich.com/85080/beginning-alamofire-tutorial" target="_blank" rel="external">教程</a> 还有这个<a href="https://github.com/Moya/Moya" target="_blank" rel="external">封装的库</a>  <p></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/"> #Swift </a>
+          
+            <a href="/tags/iOS/"> #iOS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/08/19/Learn-Git/">
+                Learn Git
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-08-19
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>Git已然成为很多公司生产力工具之一，很有必要深入了解学习一下.<br>由于Xcode已经集成了Git，所以不需要再安装.<br>然后你需要设置一下本机的用户名和邮箱来区分不同的使用者:  </p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user<span class="class">.name</span> <span class="string">"Your name"</span> </span><br><span class="line">git config --global user<span class="class">.email</span> <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></table></figure>
+<p>创建一个repository：进入你需要创建的目录下输入:  </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> init</span><br></pre></td></tr></table></figure>
+<p>查看当前repository的状态:  </p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">status</span></span><br></pre></td></tr></table></figure>
+<p>查看有哪些变化:  </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> diff</span><br></pre></td></tr></table></figure>
+<p>提交修改:  </p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span> .  </span><br><span class="line">git commit -m <span class="string">"some describe"</span></span><br></pre></td></tr></table></figure>
+<p>查看你的commit记录:  </p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="command">log</span></span><br></pre></td></tr></table></figure>
+<p>也可以在后面加个参数:  </p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="command">log</span> <span class="comment">--pretty=oneline</span></span><br></pre></td></tr></table></figure>
+<p>回退到上个commit:  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">reset</span> <span class="comment">--hard HEAD^</span></span></span><br></pre></td></tr></table></figure>
+<p>回退到指定commit:  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">reset</span> <span class="comment">--hard fe9a4ddd</span></span></span><br></pre></td></tr></table></figure>
+<p>查看命令记录:  </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> reflog</span><br></pre></td></tr></table></figure>
+<p>丢弃工作区的修改:  </p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="comment">-- somefile</span></span><br></pre></td></tr></table></figure>
+<p>撤销暂存区的修改:  </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> reset HEAD somefile</span><br></pre></td></tr></table></figure>
+<p>从git中删除某个文件:  </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> rm somefile</span><br></pre></td></tr></table></figure>
+<p>从远程库克隆一个本地库:  </p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git<span class="annotation">@github</span>.<span class="string">com:</span>Junne/MyBlog.git</span><br></pre></td></tr></table></figure>
+<p>创建分支:  </p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="tag">b</span> newBranch</span><br></pre></td></tr></table></figure>
+<p>相当于:   </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> branch newBranch </span><br><span class="line">git checkout newBranch</span><br></pre></td></tr></table></figure>
+<p>查看分支:  </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> branch</span><br></pre></td></tr></table></figure>
+<p>切换回主分支后，将newBranch分支合并到主分支:</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">merge</span> newBranch</span><br></pre></td></tr></table></figure>
+<p>删除分支:  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="operator">-d</span> newBranch</span><br></pre></td></tr></table></figure>
+<p>查看分支合并情况:   </p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="command">log</span> <span class="comment">--graph --pretty=oneline --abbrev-commit</span></span><br></pre></td></tr></table></figure>
+<p>阅读资料:  </p>
+<ul>
+<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git教程</a>  </li>
+<li><a href="http://git-scm.com/book/zh/v1" target="_blank" rel="external">Pro Git</a>  </li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/"> #git </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/08/18/Optimize-UITableview/">
+                Optimize UITableview
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-08-18
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>UITableview可以说是iOS开发中最重要的知识点，而当你滑动时是否流畅成为用户体验中很重要的环节，那么如何才能写出如丝般顺滑的UITableview呢？<br>有必要先读读苹果关于Table View的<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/AboutTableViewsiPhone/AboutTableViewsiPhone.html" target="_blank" rel="external">文档</a>  </p>
+<p></p><h3 id="1">UITableview</h3>  <p></p>
+<ul>
+<li><a href="http://www.cocoachina.com/ios/20150729/12795.html" target="_blank" rel="external">10个加速Table View开发的Tips</a>  </li>
+<li><a href="https://github.com/johnil/VVeboTableViewDemo" target="_blank" rel="external">VVeboTableViewDemo</a>  </li>
+<li><a href="http://www.cocoachina.com/ios/20150602/11968.html" target="_blank" rel="external">UITableView优化技巧</a>  </li>
+<li><a href="http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/" target="_blank" rel="external">优化UITableViewCell高度计算的那些事</a>  </li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UITableview/"> #UITableview </a>
+          
+            <a href="/tags/iOS/"> #iOS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/06/23/Effective-Objective-C-2-0-Summary/">
+                Effective Objective-C 2.0 总结
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-23
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>《Effective Objective-C 2.0》超级经典的一本OC进阶的书，买了有一年了，平时只是随手翻翻，而且终究没有仔细地看完，今天试图用写篇博客的方式，去读一本书:)全书共7章、列出了52条相关的总结，那我就一条条来记录喽.  </p>
+<p></p><h5 id="1">Chapter 1: Accustoming Yourself to Objective-C</h5><p></p>
+<p></p><h6 id="1.1">Familiarize Yourself with ObjectiveC’s Roots</h6><br>Objective-C由Smaltalk演化而来，而其是消息型语言的鼻祖.Objective-C的对象总是分配在堆空间(heap)上.<p></p>
+<p></p><h6 id="1.2">Minimize Importing Headers in Headers</h6><br>在类的头文件中尽量少引入其他头文件.如果不是继承某个超类，可以使用“向前声明”(forward declaring)的方式,即在头文件中用@class来导入.这样可以告诉编译器有某个方法或属性，但无需知道其中的细节，可以节省编译时间且有时候还可以防止循环引用.  <p></p>
+<p></p><h6 id="1.3">Prefer Literal Syntax over the Equivalent Methods</h6><br>多用字面量语法，少用等价方法.比如NSNumber <em>someNumber = @1;要好过NSNumber </em>someNumber = [NSNumber numberWithInt:1];<p></p>
+<p></p><h6 id="1.4">Prefer Typed Constants to Preprocessor #define</h6><br>多用类型常量，少用#define预处理命令.当我们定义一个#define HELLO 11时,所以引入该头文件的代码中有HELLO都会被替换成11.<p></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/"> #iOS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/06/18/Dynamic-UITableviewCell-Height-Calculate/">
+                动态UITableViewCell的高度计算
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-18
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>iOS开发中经常会遇到不同cell因为字体图片大小等的原因从而高度有多不同，这个时候就需要我们动态的计算cell的高度了，那么如何来进行计算呢？  </p>
+<h3 id="1">iOS 8</h3><br>你可以在<a href="http://www.raywenderlich.com/87975/dynamic-table-view-cell-height-ios-8-swift" target="_blank" rel="external">这篇文章</a>学习下iOS中利用Autolayout来动态计算高度，步骤大概为:<br><br>&gt; 1.利用AutoLayout 创建tableview的cell内容<br>&gt; 2.设置cell的rowHeight=UITableViewAutomaticDimension<br>&gt; 3.设置estimatedRowHeight或者实现height estimation的代理方法<br><br><br>在设置Autolayout时有时会遇到下图中的设置：<br><img src="http://7xjmzg.com1.z0.glb.clouddn.com/HorizontalVertical.png" alt="HorizontalVertical"><br>这是设置压缩和放大的优先级，可以参考<a href="http://blog.csdn.net/yongyinmg/article/details/39526207" target="_blank" rel="external">这篇文章</a><br>如果你对AutoLayout还不太熟，可以做个<a href="http://www.raywenderlich.com/83129/beginning-auto-layout-tutorial-swift-part-1" target="_blank" rel="external">小练习</a><br><br><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableView<span class="class">.rowHeight</span> = UITableViewAutomaticDimension  </span><br><span class="line">tableView<span class="class">.estimatedRowHeight</span> = <span class="number">80.0</span></span><br></pre></td></tr></table></figure><br><br>或者实现estimatedHeightForRowAtIndex的代码方法:<br><br><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> isLandscapeOrientation() &#123;</span><br><span class="line">    <span class="keyword">return</span> hasImageAtIndexPath(indexPath) ? <span class="number">140.0</span> : <span class="number">120.0</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> hasImageAtIndexPath(indexPath) ? <span class="number">235.0</span> : <span class="number">155.0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br><br>其中estimatedRowHeight是根据你项目需要设置的高度,超简单吧,再也不用计算不同字体UILabel等的大小高度了:)<br><br><h3 id="2">iOS 7</h3>
+
+<p>可以先看看<a href="http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout" target="_blank" rel="external">这篇文章</a><br>关键要实现heightForRowAtIndexPath这个代理方法:  </p>
+<pre><code>
+- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath {
+  <span class="keyword">return</span> [<span class="keyword">self</span> heightForBasicCellAtIndexPath:indexPath];
+}
+
+- (<span class="built_in">CGFloat</span>)heightForBasicCellAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath {
+  <span class="keyword">static</span> RWBasicCell *sizingCell = <span class="literal">nil</span>;
+  <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;
+  <span class="built_in">dispatch_once</span>(&amp;onceToken, ^{
+    sizingCell = [<span class="keyword">self</span><span class="variable">.tableView</span> dequeueReusableCellWithIdentifier:RWBasicCellIdentifier];
+  });
+
+  [<span class="keyword">self</span> configureBasicCell:sizingCell atIndexPath:indexPath];
+  <span class="keyword">return</span> [<span class="keyword">self</span> calculateHeightForConfiguredSizingCell:sizingCell];
+}
+
+- (<span class="built_in">CGFloat</span>)calculateHeightForConfiguredSizingCell:(<span class="built_in">UITableViewCell</span> *)sizingCell {
+  [sizingCell setNeedsLayout];
+  [sizingCell layoutIfNeeded];
+
+  <span class="built_in">CGSize</span> size = [sizingCell<span class="variable">.contentView</span> systemLayoutSizeFittingSize:<span class="built_in">UILayoutFittingCompressedSize</span>];
+  <span class="keyword">return</span> size<span class="variable">.height</span> + <span class="number">1.0</span>f; <span class="comment">// Add 1.0f for the cell separator height</span>
+}
+</code></pre><p>这就需要计算cell中contentView的高度，一般根据字数多少和字的大小来计算。  </p>
+<p></p><h3 id="3">Resource</h3><p></p>
+<ul>
+<li><a href="http://www.raywenderlich.com/87975/dynamic-table-view-cell-height-ios-8-swift" target="_blank" rel="external">UITableView Tutorial:Dynamic Table View Cell Height</a>  </li>
+<li><a href="https://github.com/forkingdog/UITableView-FDTemplateLayoutCell" target="_blank" rel="external">UITableView-FDTemplateLayoutCell:for automatically UITableViewCell height calculating</a></li>
+<li><a href="http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout" target="_blank" rel="external">Dynamic Table View Cell Height and Auto Layout</a>  </li>
+<li><a href="https://developer.apple.com/library/prerelease/ios/documentation/UserExperience/Conceptual/AutolayoutPG/Introduction/Introduction.html" target="_blank" rel="external">Auto Layout Guide</a>  </li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/"> #iOS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/06/15/Concurrent-Programming/">
+                iOS开发中的多线程
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-15
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h3 id="1">Grand Central Dispatch</h3>
+
+<h3 id="2">Operation Queues</h3>
+
+<h3 id="3">Run Loops</h3>
+
+<p></p><h3 id="2">Resource</h3><p></p>
+<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html" target="_blank" rel="external">Concurrency Programming Guide</a>  </li>
+<li><a href="http://www.objc.io/issues/2-concurrency/" target="_blank" rel="external">Concurrent Programming From Objc.io</a>  </li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/Introduction/Introduction.html" target="_blank" rel="external">Threading Programming Guide</a>  </li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/"> #iOS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/06/14/A-glance-of-Watch-OS-2/">
+                Glance at Watch OS 2
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-14
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p><img src="http://7xjmzg.com1.z0.glb.clouddn.com/watchos2.png" alt="watchos2"></p>
+<p></p><h3 id="1">Architecture</h3><br>WatchOS 2 can run the WatchKit extension on the user’s Apple Watch and make it possible for your app to run when your phone is not present.We have a look from the pic below:<br><img src="http://7xjmzg.com1.z0.glb.clouddn.com/watchos2architecture.png" alt="watchos2architecture"><br>WatchOS 1: Apple Watch requires the presence of an iPhone to run third-party apps. To create a third-party app, you need two separate bundles: a WatchKit app (that runs on Apple Watch) and a WatchKit extension (that runs on the user’s iPhone). The WatchKit app contains only the storyboards and resource files associated with your app’s user interface. The WatchKit extension contains the code for managing the WatchKit app’s user interface and for responding to user interactions.(from<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/WatchKitProgrammingGuide/index.html#//apple_ref/doc/uid/TP40014969" target="_blank" rel="external">Apple Watch Programming Guide</a>)  <p></p>
+<p></p><h3 id="2">Glance</h3><br>Glance displays timely and relevant information from your app.It’s a read-only interface.A glance is a focused interface that you use to display your app’s most important information. Glances are aptly named because they are intended to be looked at quickly by the user. Glances are nonscrolling; the entire glance interface must fit on a single screen. Glances are read-only and cannot contain buttons, switches, or other interactive controls. Tapping a glance launches your WatchKit app.  <p></p>
+<p></p><h3 id="3">Lifecycle</h3><br>Launching a WatchKit app:<br><img src="http://7xjmzg.com1.z0.glb.clouddn.com/watchoslifecycle.png" alt="watchoslifecycle"><br>The life cycle of an interface controller:<br><img src="http://7xjmzg.com1.z0.glb.clouddn.com/interfacelifecycle.png" alt="interfacelifecycle"><p></p>
+<p></p><h3 id="4">Resource</h3><p></p>
+<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/WatchKitProgrammingGuide/index.html#//apple_ref/doc/uid/TP40014969" target="_blank" rel="external">Apple Watch Programming Guide</a>  </li>
+<li><a href="https://developer.apple.com/library/prerelease/watchos/documentation/General/Conceptual/WatchKitProgrammingGuide/" target="_blank" rel="external">WatchKit Programming Guide</a>  </li>
+<li><a href="https://developer.apple.com/library/prerelease/watchos/documentation/General/Conceptual/WatchKitProgrammingGuide/" target="_blank" rel="external">watchOS 2 Transition Guide</a>  </li>
+<li><a href="https://developer.apple.com/watch/human-interface-guidelines/" target="_blank" rel="external">Apple Watch Human Interface Guidelines</a>  </li>
+<li><a href="https://developer.apple.com/watchkit/tips/" target="_blank" rel="external">WatchKit Development Tips and Best Practices</a>  </li>
+<li><a href="http://www.raywenderlich.com/?s=watchkit&amp;cof=FORID%3A10" target="_blank" rel="external">Raywenderlich Watch Tutorial</a>  </li>
+<li><a href="https://developer.apple.com/videos/wwdc/2015/?id=105" target="_blank" rel="external">Session 105:Introducing WatchKit for watchOS 2</a>  </li>
+<li><a href="https://developer.apple.com/videos/wwdc/2015/?id=207" target="_blank" rel="external">Session 207:WatchKit In-Depth,Part 1</a>  </li>
+<li><a href="https://developer.apple.com/videos/wwdc/2015/?id=208" target="_blank" rel="external">Session 208:WatchKit In-Depth,Part 2</a>  </li>
+<li><a href="https://www.icloud.com/pages/AwBWCAESEC9BxhCXUuOOg6ChrE-uZrwaKmQPtEHrcL7HFI4JgHygl08BETTFumet_i93LbIsRno9Gd3BFuo_APnDrQMCUCAQEEIIvE_BC86PVjR4kOIrboTvPUlOydWDyujn1yUU59Mv_S#WWDC15_Session_207,_208_WatchKit_In-Depth" target="_blank" rel="external">Session 207&amp;208 Note</a>  </li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/"> #iOS </a>
+          
+            <a href="/tags/watchOS/"> #watchOS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/06/12/WWDC15/">
+                WWDC15
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-12
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p><img src="http://7xjmzg.com1.z0.glb.clouddn.com/wwdc15.png" alt="wwdc15"><br>WWDC已经过去数日了，那么这届苹果开发者大会上有哪些是我们值得学习和注意的呢？今天我就不偷懒，小结一下吧.  </p>
+<p>一句话总结:升级<a href="#1">MAC OS</a> <a href="#2">iOS</a> 以及新的<a href="#3">Whatch OS</a>,全力推进<a href="#4">Swift</a>的发展.  </p>
+<p></p><h3 id="1">Mac OS</h3><br>新一代桌面操作系统被命名为OS X EI Capitan.对系统进行了诸多优化，增加了众多手势操作以及对Force Touch更好地支持，Force Touch这个最初在Apple Watch上使用的技术，我想很快就会在苹果的全系产品中使用.新的系统如同iOS9般，是拯救老设备的Super Men.微博上已经有人不禁感叹:“新系统让我的2010版Macbook Air焕发了青春”.  <p></p>
+<p></p><h3 id="2">iOS</h3><br>iOS9的多任务模式使得曾经只能看看视频、玩玩游戏的iPad向生产力工具迈进.目前有三种模式:1.Slide Over,滑动覆盖调出. 2.Picture in Picture画中画模式,即可以把视频播放缩小（还记得原来我家买的彩电有这个功能，同时预览两个电视节目）3.Split View.分割模式，两个独立的app一边显示一个，五五分或者三七分之类.对于开发者，所使用的Size Class和AutoLayout会发挥越来越大的作用.更加智能的Siri和开放搜索API.感觉苹果会让Siri越来越智能，也许有一天，你说一声”Hey,Siri.I want book an air ticket to Guangzhou on June 13”,Siri就会把机票给你定好了.iOS9更多的是对iOS8的修复和完善，而且安装的大小也压缩了好多，依旧是旧设备的福音，4S的用户可以安心升级了:)  <p></p>
+<p></p><h3 id="3">Watch OS</h3><br>随着架构的改变，watchOS从最初只能做iPhone的附属展示，慢慢变得可以独立运行.有理由相信，不久，Apple Watch将成为一款独立的硬件.(自己还没好好研究过这个东西，过些日子做个Demo练习下.一代由于硬件和性能的不完善，只能做一些简单的事情，且经常需要等待，其实这都是没钱买的理由&gt;_&lt;，二代一出立马买买买) <p></p>
+<p></p><h3 id="4">Swift</h3><br>Swift诞生有一年了(天呐，一年过得好快!).如果你还在观望，那么是时候全力学习了，苹果官方的众多APP都在用Swift来重写，而且可以预见，未来的App都会从Objective-C转入到Swift上来.随着Swift的开源和跨平台以及Swift2的发布，作为iOS开发者，快快行动吧.而我的个人应用也打算用Swift来写，要努力学习呦.  <p></p>
+<p><img src="http://7xjmzg.com1.z0.glb.clouddn.com/WWDC15Videos.png" alt="WWDC15Video">  </p>
+<p>接下来就是学学学了,加油喽!</p>
+<p>贴几个学习的链接:  </p>
+<p><a href="https://itunes.apple.com/us/book/id1002622538" target="_blank" rel="external">The Swift Programming language</a><br><a href="https://developer.apple.com/videos/wwdc/2015/" target="_blank" rel="external">WWDC15</a><br><a href="https://github.com/ipader/SwiftGuide" target="_blank" rel="external">SwiftGuide</a><br><a href="http://cs193p.stanford.edu" target="_blank" rel="external">CS193p</a>  </p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/WWDC15/"> #WWDC15 </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/06/10/photograph_world/">
+                初窥摄影的世界
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-10
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p><img src="http://7xjmzg.com1.z0.glb.clouddn.com/camera.jpg" alt="camera">  </p>
+<p>&emsp;&emsp;好久没写东西了，感觉脑子快要锈掉了.不过在锈掉之前，希望自己能克服惰性，多写一些出来，就当还一下前世所犯的滔天罪过吧.  </p>
+<p>&emsp;&emsp;摄影其实就是光与影像的处理.原理很简单，小学时候我们自然课上的小孔成像就是照相机最初的雏形.光通过镜头，继而在感光元件上成像.  </p>
+<p>&emsp;&emsp;根据电子取景和光学取景的差别，相机简单的可以分为数码相机和单反相机.数码相机就是我们平时用的卡片机，但随着手机上的摄像头越来越好，且能拍出超棒的照片,可以先来看看用iPhone拍出的<a href="http://www.apple.com/cn/iphone/world-gallery/" target="_blank" rel="external">好东西</a>.卡片机会在不久后消亡,接替他的将是你的手机，其实手机已经成为现在世界上产生照片最多的设配了.电子取景由于需要经过电子手段处理，当你按下快门的时候，拍摄的景物会有时间的延后，而采用光学取景的单反相机，获得的图像What You See is What You Get,不会产生时间的延迟.  </p>
+<p>&emsp;&emsp;我们有时会听见说你的相机是全画幅、半画幅或者残幅.其实这是在说单反上的感光元件的尺寸.我们小时候照相时，照相馆不仅会给我们相片，而且还会给我们小小的一张底片.而那张底片的尺寸一般为36x24mm.感光元件和这个一样的，就叫全画幅相机，代表作是佳能的5D相机，还有性价比很高的佳能6D.感光元件小于这个尺寸就叫做APS画幅，也叫半幅或残幅.尼康的APS-H画幅相机的感光元件尺寸是30.2x16.7mm,佳能的APS-C画幅相机的感光元件尺寸为24.9x16.6mm,相当于全画幅的2/3和1/2. </p>
+<p>&emsp;&emsp;拍照有几项参数是我们需要知道的:  <em><a href="#1">焦距</a>  </em><a href="#2">光圈</a>  <em><a href="#3">快门速度</a>  </em><a href="#4">ISO</a> <a href="#5">白平衡</a>   </p>
+<p></p><h3 id="1">焦距</h3><br>&emsp;&emsp;焦距就是镜头的光学中心到成像面(也就是焦点)的距离.焦距越长，远处的物体被放得越大，焦距越小，所能拍摄的范围就越大，也就是广角.  <p></p>
+<p></p><h3 id="2">光圈</h3><br>&emsp;&emsp;光圈就是控制光线透过镜头的装置.光圈有个计算公式:光圈的F值=焦距/光圈的直径.根据公式我们很容易就能看出来，焦距确定的情况下，F值越小，光圈的直径就越大.那么这个光圈有啥作用捏？光圈大了，进光量当然会越多.假若我们的快门速度不变的情况下，F值越小，进光量就越多，你拍的照片就比较亮，反之，照片就会变得暗一些.  <p></p>
+<p></p><h3 id="3">快门速度</h3><br>&emsp;&emsp;快门速度即曝光时长，曝光时间越短，图像就会越清晰，反之就会模糊.我们在拍摄运动中的物体时，经常会把快门速度调得很短，比如捕捉运动员的瞬间，但有时候时间长也会获得自己想要的画面，比如夜晚拍摄汽车的光影，甚至利用相机的B快门来拍摄光绘，绘出个I Love You之类的,哈哈.  <p></p>
+<p></p><h3 id="4">ISO</h3><br>&emsp;&emsp;ISO表示感光元件的感光速度,数值越高表示感光能力越强.ISO也是有计算公式的: H*S=0.8 H为曝光量,S为感光度.如若相同的曝光量，ISO100的曝光时间是ISO200的两倍.那么这个到底有啥用呢？当ISO低的时候，相片的细节就越好，ISO高的时候，噪点会越来越严重，图像越来越不清晰.那直接低ISO不就行了嘛!但当我们处于较暗的环境时，提高ISO可以弥补光线的不足.如若光圈不变，提高ISO值，可以用较短的快门速度获取同样的曝光量,而在快门速度不变的情况下，可以用较小的光圈获得同样的曝光量.   <p></p>
+<p></p><h3 id="5">白平衡</h3><br>&emsp;&emsp;白平衡是什么玩意儿呢？动动手百度一下吧，快下班了呢！  <p></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/photography/"> #photography </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
     
       
 
@@ -191,7 +930,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -205,7 +944,7 @@
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">标签</span>
               
           </div>
