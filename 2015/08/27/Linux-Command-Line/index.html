@@ -20,7 +20,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -31,7 +31,7 @@
 
 
 
-  <title> Hello World // Junne </title>
+  <title> Linux Command Line // Junne </title>
 </head>
 
 <body>
@@ -102,7 +102,7 @@
           
           
             
-              Hello World
+              Linux Command Line
             
           
         </h1>
@@ -110,7 +110,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-05-06
+          发表于 2015-08-27
         </span>
 
         
@@ -127,31 +127,90 @@
       
 
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>常用的Linux命令:   </p>
+<p>Tab键用来补全命令.<br>Ctrl+C退出当前操作.<br>pwd显示当前目录.<br>mkdir+目录名,新建文件夹.<br>rmdir+目录名,删除空的文件夹.  </p>
+<p>Vim使用:<br>三种模式: 命令模式、插入模式、编辑模式.用Esc或i来切换.  </p>
+<ul>
+<li>set number  显示行号  </li>
+<li>set nonumber 隐藏行号  </li>
+<li>/abc 查找abc 按n跳到下一个，shift+n上一个  </li>
+<li>i在当前位置插入  </li>
+<li>I在当前行首插入  </li>
+<li>A在当前行尾插入  </li>
+<li>o在当前行之后插入一行  </li>
+<li>O在当前行之前插入一行  </li>
+<li>?abc 查找abc反向查找  </li>
+<li>set ignorecase 忽略大小写查找  </li>
+<li>set noignorecase 不忽略大小写查找  </li>
+<li>set hlsearch 高亮显示搜索结果  </li>
+<li>set nohlsearch 关闭高亮搜索显示  </li>
+<li>ra 将光标所在字符替换成a  </li>
+<li>s/old/new 替换当前行第一个匹配,old换为new  </li>
+<li>s/old/new/g 替换当前行所有匹配  </li>
+<li>%s/old/new 替换所有行第一个匹配  </li>
+<li>%s/old/new/g 替换整个文件的所有匹配  </li>
+<li>1,3 s/^/  /g 第一、三行每行前面加两个空格  </li>
+<li>kjhl 上下左右移动 前面可加行数 移动行数  </li>
+<li>w向后移一个单词,位于单词首字母 前面可加数字   </li>
+<li>b向前移动一个单词  前面可加数字  </li>
+<li>e同w,光标在单词末尾  </li>
+<li>ge同b,光标在词尾  </li>
+<li>^移动到本行第一个非空白字符处  </li>
+<li>0移动到本行第一个字符上  </li>
+<li>$移动到行尾 前面可加数字  </li>
+<li>gg移动到文件头  </li>
+<li>G移动到文件尾  </li>
+<li>f+字符 移动到光标后第一个为该字符的位置 5fa跳到第五个为a的位置   </li>
+<li>F同f反向查找  </li>
+<li>:行数 跳到指定行  </li>
+<li>行号+G 跳到该行  </li>
+<li>Ctrl+e 向下滚动一行  </li>
+<li>Ctrl+y 向上滚动一行 </li>
+<li>Ctrl+d 向下滚动半屏  </li>
+<li>Ctrl+u 向上滚动半屏  </li>
+<li>Ctrl+f 向下滚动一屏  </li>
+<li>Ctrl+b 向上滚动一屏  </li>
+<li>u 撤销  </li>
+<li>U 对整行撤销  </li>
+<li>Ctrl+r 重做  </li>
+<li>x删除当前字符  </li>
+<li>4x删除当前光标后4个字符  </li>
+<li>X删除当前字符的前一个字符 dh  </li>
+<li>dl 相当于x   </li>
+<li>dh 同X    </li>
+<li>dd 删除当前行  </li>
+<li>dj 删除下一行  </li>
+<li>dk 删除下一行  </li>
+<li>10d 删除当前行开始的10行  </li>
+<li>D删除当前字符到行尾  </li>
+<li>d$ 删除当前字符之后的所有字符，当前行  </li>
+<li>jdG 删除当前行之后所有行  </li>
+<li>:1,10d 删除1-10行  </li>
+<li>:2,$d 删除第2行后所有行  </li>
+</ul>
+<p><a href="http://www.cnblogs.com/softwaretesting/archive/2011/07/12/2104435.html" target="_blank" rel="external">文章来源</a>   </p>
 
       
     </div>
 
     <div class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/linux/"> #linux </a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/10/photograph_world/">初窥摄影的世界</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/26/Learn-Sketch/">Learn Sketch</a>
             
           </div>
         </div>
@@ -208,7 +267,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -222,7 +281,7 @@
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">标签</span>
               
           </div>
@@ -252,7 +311,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick_Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create_a_new_post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run_server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate_static_files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy_to_remote_sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
