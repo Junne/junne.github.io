@@ -104,6 +104,165 @@
           
           
             
+              <a class="post-title-link" href="/2015/06/15/Concurrent-Programming/">
+                iOS开发中的多线程
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-15
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h3 id="1">Grand Central Dispatch</h3>
+
+<h3 id="2">Operation Queues</h3>
+
+<h3 id="3">Run Loops</h3>
+
+<p></p><h3 id="2">Resource</h3><p></p>
+<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html" target="_blank" rel="external">Concurrency Programming Guide</a>  </li>
+<li><a href="http://www.objc.io/issues/2-concurrency/" target="_blank" rel="external">Concurrent Programming From Objc.io</a>  </li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/Introduction/Introduction.html" target="_blank" rel="external">Threading Programming Guide</a>  </li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/"> #iOS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/06/14/A-glance-of-Watch-OS-2/">
+                Glance at Watch OS 2
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-14
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p><img src="http://7xjmzg.com1.z0.glb.clouddn.com/watchos2.png" alt="watchos2"></p>
+<p></p><h3 id="1">Architecture</h3><br>WatchOS 2 can run the WatchKit extension on the user’s Apple Watch and make it possible for your app to run when your phone is not present.We have a look from the pic below:<br><img src="http://7xjmzg.com1.z0.glb.clouddn.com/watchos2architecture.png" alt="watchos2architecture"><br>WatchOS 1: Apple Watch requires the presence of an iPhone to run third-party apps. To create a third-party app, you need two separate bundles: a WatchKit app (that runs on Apple Watch) and a WatchKit extension (that runs on the user’s iPhone). The WatchKit app contains only the storyboards and resource files associated with your app’s user interface. The WatchKit extension contains the code for managing the WatchKit app’s user interface and for responding to user interactions.(from<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/WatchKitProgrammingGuide/index.html#//apple_ref/doc/uid/TP40014969" target="_blank" rel="external">Apple Watch Programming Guide</a>)  <p></p>
+<p></p><h3 id="2">Glance</h3><br>Glance displays timely and relevant information from your app.It’s a read-only interface.A glance is a focused interface that you use to display your app’s most important information. Glances are aptly named because they are intended to be looked at quickly by the user. Glances are nonscrolling; the entire glance interface must fit on a single screen. Glances are read-only and cannot contain buttons, switches, or other interactive controls. Tapping a glance launches your WatchKit app.  <p></p>
+<p></p><h3 id="3">Lifecycle</h3><br>Launching a WatchKit app:<br><img src="http://7xjmzg.com1.z0.glb.clouddn.com/watchoslifecycle.png" alt="watchoslifecycle"><br>The life cycle of an interface controller:<br><img src="http://7xjmzg.com1.z0.glb.clouddn.com/interfacelifecycle.png" alt="interfacelifecycle"><p></p>
+<p></p><h3 id="4">Resource</h3><p></p>
+<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/WatchKitProgrammingGuide/index.html#//apple_ref/doc/uid/TP40014969" target="_blank" rel="external">Apple Watch Programming Guide</a>  </li>
+<li><a href="https://developer.apple.com/library/prerelease/watchos/documentation/General/Conceptual/WatchKitProgrammingGuide/" target="_blank" rel="external">WatchKit Programming Guide</a>  </li>
+<li><a href="https://developer.apple.com/library/prerelease/watchos/documentation/General/Conceptual/WatchKitProgrammingGuide/" target="_blank" rel="external">watchOS 2 Transition Guide</a>  </li>
+<li><a href="https://developer.apple.com/watch/human-interface-guidelines/" target="_blank" rel="external">Apple Watch Human Interface Guidelines</a>  </li>
+<li><a href="https://developer.apple.com/watchkit/tips/" target="_blank" rel="external">WatchKit Development Tips and Best Practices</a>  </li>
+<li><a href="http://www.raywenderlich.com/?s=watchkit&amp;cof=FORID%3A10" target="_blank" rel="external">Raywenderlich Watch Tutorial</a>  </li>
+<li><a href="https://developer.apple.com/videos/wwdc/2015/?id=105" target="_blank" rel="external">Session 105:Introducing WatchKit for watchOS 2</a>  </li>
+<li><a href="https://developer.apple.com/videos/wwdc/2015/?id=207" target="_blank" rel="external">Session 207:WatchKit In-Depth,Part 1</a>  </li>
+<li><a href="https://developer.apple.com/videos/wwdc/2015/?id=208" target="_blank" rel="external">Session 208:WatchKit In-Depth,Part 2</a>  </li>
+<li><a href="https://www.icloud.com/pages/AwBWCAESEC9BxhCXUuOOg6ChrE-uZrwaKmQPtEHrcL7HFI4JgHygl08BETTFumet_i93LbIsRno9Gd3BFuo_APnDrQMCUCAQEEIIvE_BC86PVjR4kOIrboTvPUlOydWDyujn1yUU59Mv_S#WWDC15_Session_207,_208_WatchKit_In-Depth" target="_blank" rel="external">Session 207&amp;208 Note</a>  </li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/"> #iOS </a>
+          
+            <a href="/tags/watchOS/"> #watchOS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/06/12/WWDC15/">
                 WWDC15
               </a>
@@ -277,7 +436,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -291,7 +450,7 @@
 
           <div class="site-state-item site-state-tags">
             
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">标签</span>
               
           </div>

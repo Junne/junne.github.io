@@ -31,7 +31,7 @@
 
 
 
-  <title> 动态UITableViewCell的高度计算 // Junne </title>
+  <title> app image size // Junne </title>
 </head>
 
 <body>
@@ -102,7 +102,7 @@
           
           
             
-              动态UITableViewCell的高度计算
+              app image size
             
           
         </h1>
@@ -110,7 +110,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-06-18
+          发表于 2015-09-03
         </span>
 
         
@@ -127,41 +127,17 @@
       
 
       
-        <p>iOS开发中经常会遇到不同cell因为字体图片大小等的原因从而高度有多不同，这个时候就需要我们动态的计算cell的高度了，那么如何来进行计算呢？  </p>
-<h3 id="1">iOS 8</h3><br>你可以在<a href="http://www.raywenderlich.com/87975/dynamic-table-view-cell-height-ios-8-swift" target="_blank" rel="external">这篇文章</a>学习下iOS中利用Autolayout来动态计算高度，步骤大概为:<br><br>&gt; 1.利用AutoLayout 创建tableview的cell内容<br>&gt; 2.设置cell的rowHeight=UITableViewAutomaticDimension<br>&gt; 3.设置estimatedRowHeight或者实现height estimation的代理方法<br><br><br>在设置Autolayout时有时会遇到下图中的设置：<br><img src="http://7xjmzg.com1.z0.glb.clouddn.com/HorizontalVertical.png" alt="HorizontalVertical"><br>这是设置压缩和放大的优先级，可以参考<a href="http://blog.csdn.net/yongyinmg/article/details/39526207" target="_blank" rel="external">这篇文章</a><br>如果你对AutoLayout还不太熟，可以做个<a href="http://www.raywenderlich.com/83129/beginning-auto-layout-tutorial-swift-part-1" target="_blank" rel="external">小练习</a><br><br><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableView<span class="class">.rowHeight</span> = UITableViewAutomaticDimension  </span><br><span class="line">tableView<span class="class">.estimatedRowHeight</span> = <span class="number">80.0</span></span><br></pre></td></tr></table></figure><br><br>或者实现estimatedHeightForRowAtIndex的代码方法:<br><br><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> isLandscapeOrientation() &#123;</span><br><span class="line">    <span class="keyword">return</span> hasImageAtIndexPath(indexPath) ? <span class="number">140.0</span> : <span class="number">120.0</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> hasImageAtIndexPath(indexPath) ? <span class="number">235.0</span> : <span class="number">155.0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br><br>其中estimatedRowHeight是根据你项目需要设置的高度,超简单吧,再也不用计算不同字体UILabel等的大小高度了:)<br><br><h3 id="2">iOS 7</h3>
-
-<p>可以先看看<a href="http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout" target="_blank" rel="external">这篇文章</a><br>关键要实现heightForRowAtIndexPath这个代理方法:  </p>
-<pre><code>
-- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath {
-  <span class="keyword">return</span> [<span class="keyword">self</span> heightForBasicCellAtIndexPath:indexPath];
-}
-
-- (<span class="built_in">CGFloat</span>)heightForBasicCellAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath {
-  <span class="keyword">static</span> RWBasicCell *sizingCell = <span class="literal">nil</span>;
-  <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;
-  <span class="built_in">dispatch_once</span>(&amp;onceToken, ^{
-    sizingCell = [<span class="keyword">self</span><span class="variable">.tableView</span> dequeueReusableCellWithIdentifier:RWBasicCellIdentifier];
-  });
-
-  [<span class="keyword">self</span> configureBasicCell:sizingCell atIndexPath:indexPath];
-  <span class="keyword">return</span> [<span class="keyword">self</span> calculateHeightForConfiguredSizingCell:sizingCell];
-}
-
-- (<span class="built_in">CGFloat</span>)calculateHeightForConfiguredSizingCell:(<span class="built_in">UITableViewCell</span> *)sizingCell {
-  [sizingCell setNeedsLayout];
-  [sizingCell layoutIfNeeded];
-
-  <span class="built_in">CGSize</span> size = [sizingCell<span class="variable">.contentView</span> systemLayoutSizeFittingSize:<span class="built_in">UILayoutFittingCompressedSize</span>];
-  <span class="keyword">return</span> size<span class="variable">.height</span> + <span class="number">1.0</span>f; <span class="comment">// Add 1.0f for the cell separator height</span>
-}
-</code></pre><p>这就需要计算cell中contentView的高度，一般根据字数多少和字的大小来计算。  </p>
-<p></p><h3 id="3">Resource</h3><p></p>
+        <p>iOS app的尺寸小结.  </p>
+<p></p><h3 id="1">App Icon</h3><br>iPhone版本共需要的尺寸:  <p></p>
 <ul>
-<li><a href="http://www.raywenderlich.com/87975/dynamic-table-view-cell-height-ios-8-swift" target="_blank" rel="external">UITableView Tutorial:Dynamic Table View Cell Height</a>  </li>
-<li><a href="https://github.com/forkingdog/UITableView-FDTemplateLayoutCell" target="_blank" rel="external">UITableView-FDTemplateLayoutCell:for automatically UITableViewCell height calculating</a></li>
-<li><a href="http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout" target="_blank" rel="external">Dynamic Table View Cell Height and Auto Layout</a>  </li>
-<li><a href="https://developer.apple.com/library/prerelease/ios/documentation/UserExperience/Conceptual/AutolayoutPG/Introduction/Introduction.html" target="_blank" rel="external">Auto Layout Guide</a>  </li>
+<li>58*58  </li>
+<li>87*87</li>
+<li>80*80    </li>
+<li>120*120  </li>
+<li>120*120  </li>
+<li>180*180  </li>
 </ul>
+<p>启动页尺寸:  </p>
 
       
     </div>
@@ -179,13 +155,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/23/Effective-Objective-C-2-0-Summary/">Effective Objective-C 2.0 总结</a>
+              <a href="/2015/12/21/New-Begin/">新的开始</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/15/Concurrent-Programming/">iOS开发中的多线程</a>
+              <a href="/2015/08/27/Linux-Command-Line/">Linux Command Line</a>
             
           </div>
         </div>
@@ -286,7 +262,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">iOS 8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">iOS 7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">3.</span> <span class="nav-text">Resource</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">App Icon</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
